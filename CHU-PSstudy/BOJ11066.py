@@ -1,6 +1,6 @@
 import sys
+import math
 
-INF=99999999
 T=int(sys.stdin.readline().strip())
 
 while T :
@@ -8,8 +8,9 @@ while T :
     K=int(sys.stdin.readline().strip())
     papers=list(map(int,sys.stdin.readline().strip().split(' ')))
 
-    matrix=[[ INF for i in range(K+1)] for _ in range(K+1)]
-    subsum=[0 for i in range(K+1)]
+    maximum = math.inf
+    matrix = [[maximum] * (K+1) for _ in range(K+1)]
+    subsum=[0] *(K+1)
     for i in range(1,K+1):
         subsum[i]=subsum[i-1]+papers[i-1]
         matrix[i][i]=0
@@ -18,8 +19,8 @@ while T :
         for start in range(1,K-gap+1):
             end=start+gap
             for mid in range(start,end):
-                nowcost=subsum[end]-subsum[start-1]
                 beforecost=matrix[start][mid]+matrix[mid+1][end]
-                matrix[start][end]=min(matrix[start][end], nowcost+beforecost)
+                matrix[start][end]=min(matrix[start][end], beforecost)
+            matrix[start][end]+=subsum[end]-subsum[start-1]
     print(matrix[1][K])
 
