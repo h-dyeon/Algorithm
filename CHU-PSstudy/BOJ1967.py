@@ -1,4 +1,5 @@
 import sys
+from collections import deque
 
 N=12
 kkk=[[1, 2, 3], [1, 3, 2], [2, 4, 5], [3, 5, 11], [3, 6, 9], [4, 7, 1], [4, 8, 7], [5, 9, 15], [5, 10, 4], [6, 11, 6], [6, 12, 10]]
@@ -11,30 +12,29 @@ for i in range(1,N):
     arr[p].append([c,w])
     arr[c].append([p,w])
 
-fardist=[0]*(N+1)
-farchild=[i for i in range(N+1)]
-def faraway(start):
+def far_node(start):
     print("in start=",start,"\tchilds=",arr[start])
-    for c,w in arr[start]:
-        if visited[c]==0:
-            visited[c]=1
-            if len(arr[c])!=1:
-                faraway(c)
-            visited[c]=0
-            if fardist[start]<fardist[c]+w:
-                fardist[start]=fardist[c]+w
-                farchild[start]=farchild[c]
-    print("out start=",start,"\tfarchild=",farchild[start],"\tfardist=",fardist[start])
-    return
+    queue=deque([(start,0)])
+    visited=[0]*(N+1)
+    visited[start]=1
+    farr=[start, 0] # node idx, node distance
+    while queue:
+        c,w=queue.popleft()
+        print("c=",c,"w=",w,"\tchilds=",arr[c])
+        for newc,neww in arr[c]:
+            if visited[newc]!=1:
+                if len(arr[newc])!=1:
+                    queue.append((newc,neww+w))
+                visited[newc]=1
+                if farr[1]<neww+w:
+                    farr=[newc, neww+w]
+        print("c=",c,"w=",w,"\tqueues=",queue)
+    return farr
 
-visited=[0]*(N+1)
-visited[1]=1
-faraway(1)
+n,d=far_node(1)
 print("----------------------")
-visited=[0]*(N+1)
-visited[c]=1
-faraway(farchild[1])
-print(fardist[farchild[1]])
+nn,dd=far_node(n)
+print(dd)
 
 
 
