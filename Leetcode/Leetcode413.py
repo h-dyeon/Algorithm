@@ -20,7 +20,6 @@ def numberOfArithmeticSlices(nums):
         return 0
     nums=[nums[i+1]-nums[i] for i in range(len(nums)-1)]
     nums=[nums[i+1]-nums[i] for i in range(len(nums)-1)]
-    print(nums)
     answer=0
     for i in range(len(nums)):
         if nums[i]==0:
@@ -28,7 +27,6 @@ def numberOfArithmeticSlices(nums):
                 if nums[j]!=0:
                     break
                 answer+=1
-                
     return answer
 
 nums = [1,2,3,4,6,7,8,7]
