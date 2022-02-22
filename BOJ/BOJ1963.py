@@ -3,7 +3,9 @@ from collections import deque
 
 primes=[1 for _ in range(10001)]
 for i in range(2,10001):
-    for j in range(2,int(10001/i)):
+    for j in range(2,10001):
+        if i*j>10000:
+            break
         primes[i*j]=0
 
 N=int(input())
