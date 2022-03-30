@@ -6,20 +6,6 @@ r-=1
 c-=1
 person=[list(map(int,input().split(' '))) for _ in range(M)] #1 index
 
-# print(arr)
-# print(person)
-
-# N,M,feul=6,3,15
-# arr=[[0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 1, 0], [0, 0, 0, 1, 0, 0]]
-# r,c=5,4
-# person=[[2, 2, 5, 6], [5, 4, 1, 6], [4, 2, 3, 5]]
-
-
-# N,M,feul=6,3,100
-# arr=[[0, 0, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 1, 0, 0], [0, 0, 0, 1, 0, 0], [0, 0, 0, 0, 1, 0], [0, 0, 0, 1, 0, 0]]
-# r,c=5,4
-# person=[[2, 2, 5, 6], [5, 4, 1, 6], [4, 2, 3, 5]]
-
 oklist=[0]*len(person)
 
 def calcdistmap(R,C):
@@ -55,8 +41,6 @@ for _ in range(M):
         break
     
     # go to person
-    print(feul,"=>",feul-d)
-    print(r,c,"=>",pr,pc)
     feul-=d
     r,c=pr,pc
 
@@ -75,6 +59,3 @@ if sum(oklist)!=len(person) or feul<0:
     print(-1)
 else:
     print(feul)
-
-
-
