@@ -1,55 +1,92 @@
+########## 22.04.22
+def check(tmp):
+    num=1
+    for i in range(N-1):
+        if abs(tmp[i]-tmp[i+1])>1:
+            return False
+        if num<0 and tmp[i] != tmp[i + 1]:
+            return False
+        if tmp[i] < tmp[i + 1] :
+            if num < L:
+                return False
+            num=1
+        elif tmp[i] == tmp[i + 1]:
+            num+=1
+        else:
+            num=-1*L+1
+    if num<0:
+        return False
+    return True
+
+if __name__ == '__main__':
+    N,L=map(int,input().split(' '))
+    arr=[list(map(int,input().split(' '))) for _ in range(N)]
+    answer=0
+    for i in range(N):
+        if check(arr[i]):
+            answer+=1
+        t=[0 for _ in range(N)]
+        for j in range(N):
+            t[j]=arr[j][i]
+        if check(t):
+            answer+=1
+    print(answer)
+
+
+
+
 ########## 22.04.06
-N,L=list(map(int,input().split(' ')))
-arr=[list(map(int,input().split(' '))) for _ in range(N)]
-print(arr)
+# N,L=list(map(int,input().split(' ')))
+# arr=[list(map(int,input().split(' '))) for _ in range(N)]
+# print(arr)
 
-def rowcheck(r):
-    cnt=1
-    for i in range(N-1):
-        if arr[r][i]==arr[r][i+1]:
-            cnt+=1
-        elif cnt<0:
-            return 0
-        elif abs(arr[r][i]-arr[r][i+1])>1:
-            return 0
-        elif arr[r][i]>arr[r][i+1]:
-            cnt=-1*L+1        
-        else:
-            if cnt>=L:
-                cnt=1
-            else:
-                return 0
-    if cnt<0:
-        return 0
-    return 1
-
-
-def colcheck(c):
-    cnt=1
-    for i in range(N-1):
-        if arr[i][c]==arr[i+1][c]:
-            cnt+=1
-        elif cnt<0:
-            return 0
-        elif abs(arr[i][c]-arr[i+1][c])>1:
-            return 0
-        elif arr[i][c]>arr[i+1][c]:
-            cnt=-1*L+1        
-        else:
-            if cnt>=L:
-                cnt=1
-            else:
-                return 0
-    if cnt<0:
-        return 0
-    return 1
+# def rowcheck(r):
+#     cnt=1
+#     for i in range(N-1):
+#         if arr[r][i]==arr[r][i+1]:
+#             cnt+=1
+#         elif cnt<0:
+#             return 0
+#         elif abs(arr[r][i]-arr[r][i+1])>1:
+#             return 0
+#         elif arr[r][i]>arr[r][i+1]:
+#             cnt=-1*L+1        
+#         else:
+#             if cnt>=L:
+#                 cnt=1
+#             else:
+#                 return 0
+#     if cnt<0:
+#         return 0
+#     return 1
 
 
-answer=0
-for i in range(N):
-    answer+=rowcheck(i)
-    answer+=colcheck(i)
-print(answer)
+# def colcheck(c):
+#     cnt=1
+#     for i in range(N-1):
+#         if arr[i][c]==arr[i+1][c]:
+#             cnt+=1
+#         elif cnt<0:
+#             return 0
+#         elif abs(arr[i][c]-arr[i+1][c])>1:
+#             return 0
+#         elif arr[i][c]>arr[i+1][c]:
+#             cnt=-1*L+1        
+#         else:
+#             if cnt>=L:
+#                 cnt=1
+#             else:
+#                 return 0
+#     if cnt<0:
+#         return 0
+#     return 1
+
+
+# answer=0
+# for i in range(N):
+#     answer+=rowcheck(i)
+#     answer+=colcheck(i)
+# print(answer)
 
 
 

@@ -1,11 +1,3 @@
-
-########################################################22.04.20
-
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
 from collections import deque
 blank=-2
 
@@ -110,7 +102,14 @@ if __name__ == '__main__':
         arr = earth()
 
     print(answer)
-############################################################
+
+
+
+
+
+
+
+
 # from collections import deque
 # N,M=map(int,input().split(' '))
 # arr=[list(map(int,input().split(' '))) for _ in range(N)]
@@ -220,6 +219,7 @@ if __name__ == '__main__':
 #         for j in range(N):
 #             tmp[N-j-1][i]=arr[i][j]
 #     return tmp
+
 
 # answer=0
 # while True:
